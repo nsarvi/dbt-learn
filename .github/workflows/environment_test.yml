@@ -12,13 +12,13 @@ on:
         required: true
         type: choice
         options:
-          - dev
-          - test
-          - prod
+          - DEV
+          - TEST
+          - PROD
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  environment-variable-test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment }}
@@ -26,3 +26,7 @@ jobs:
     steps:
       - name : Displaying environment specific 
         run : echo "Deploying to ${{ github.event.inputs.environment }}"
+
+      - name : Displaying environment specific variable
+        run : echo "host is ${{ vars.HOST }}"
+        
